@@ -1,0 +1,7 @@
+Install env in conda
+
+conda create --name=ai_recommendation_product python=3.10.16 --insecure
+
+conda activate ai_recommendation_product
+
+conda install --yes --file requirements.txt --insecure
