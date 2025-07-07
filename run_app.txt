@@ -1,7 +1,7 @@
-Install env in conda
+Install env
 
-conda create --name=ai_recommendation_product python=3.10.16 --insecure
+pip install fastapi==0.115.8 uvicorn[standard]==0.29.0 pyspark==3.5.1 "pandas>=1.3.0" scikit-surprise
 
-conda activate ai_recommendation_product
+Run source
 
-conda install --yes --file requirements.txt --insecure
+uvicorn main:app --reload

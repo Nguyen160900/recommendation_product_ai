@@ -1,9 +1,8 @@
-from pyspark.sql import SparkSession
+import pandas as pd
 from services.utils import preprocess, product_features, user_features, calculate_interaction_matrix, simple_als
 
 def load_and_process_data(file_path):
-    spark = SparkSession.builder.appName("RecommendationAPI").getOrCreate()
-    df = spark.read.option("header", True).csv(file_path, inferSchema=True)
+    df = pd.read_csv(file_path)
     df = preprocess(df)
 
     products = product_features(df)
@@ -12,7 +11,6 @@ def load_and_process_data(file_path):
     als_model = simple_als(interactions)
 
     return {
-        "spark": spark,
         "products": products,
         "users": users,
         "interactions": interactions,
